@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fjimenez <fjimenez@student.42madrid.com    +#+  +:+       +#+         #
+#    By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/19 15:30:42 by fjimenez          #+#    #+#              #
-#    Updated: 2020/08/19 17:07:58 by fjimenez         ###   ########.fr        #
+#    Updated: 2020/08/19 17:23:16 by fjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S), Linux)
 	LIBS := -L./mlx -lmlx -lXext -lX11 -lm
 	MLX = mlx/libmlx.a
-	MINILIBX = mlx/
+	MINILIBX = mlx
 else ifeq ($(UNAME_S), Darwin)
 	LIBS := -L mlx_darwin -lmlx -framework OpenGL -framework Appkit -lm
 	MLX = mlx_darwin/libmlx.a
@@ -47,7 +47,7 @@ SRC = ft_cub3d \
 	ft_init_storage \
 
 SRCCUB = $(addsuffix .c, $(SRC))
-OBJS = $(addsuffix .o, $(SRC))
+OBJS = $(SRCCUB:.c=.o)
 
 SRCGNL = gnl/get_next_line.c gnl/get_next_line_utils.c
 GNL_OBJS = $(SRCGNL:.c=.o)
@@ -74,7 +74,7 @@ $(MLX):
 
 clean:
 	@$(RM) $(OBJS) $(GNL_OBJS)
-	@make -C $(MINILIBX) clean
+	@make -C $(MINILIBX)/ clean
 	@make -C libft/ clean
 
 fclean: clean

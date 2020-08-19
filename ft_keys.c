@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keys.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fjimenez <fjimenez@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 18:15:27 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/19 17:03:06 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/19 17:12:09 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_keyrelease(int keycode, t_move *move)
 		move->turn_left = 0;
 	else if (keycode == 65363 || keycode == 124)
 		move->turn_right = 0;
-	else if (keycode == 65505 | keycode == 257)
+	else if (keycode == 65505 || keycode == 257)
 		move->sprint = 0;
 	return (0);
 }
