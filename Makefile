@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fjimenez <fjimenez@student.42madrid.com    +#+  +:+       +#+         #
+#    By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/19 15:30:42 by fjimenez          #+#    #+#              #
-#    Updated: 2020/08/19 17:42:20 by fjimenez         ###   ########.fr        #
+#    Updated: 2020/08/19 18:12:53 by fjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,9 +65,10 @@ RM = rm -rf
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS) $(GNL_OBJS) $(MLX)
-	@make -C libft
+	@make -C libft/
 	@$(CC) ${SRCCUB} $(LIBFT) $(SRCGNL) ${LIBS} $(MLX) -o ${NAME}
 	@echo "$(PURPLE)==========DONE=========="
+
 
 $(MLX):
 	@make -C $(MINILIBX)
