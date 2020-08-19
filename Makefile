@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+         #
+#    By: fjimenez <fjimenez@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/19 15:30:42 by fjimenez          #+#    #+#              #
-#    Updated: 2020/08/19 16:22:47 by fjimenez         ###   ########.fr        #
+#    Updated: 2020/08/19 17:07:58 by fjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,12 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)
 	LIBS := -L./mlx -lmlx -lXext -lX11 -lm
+	MLX = mlx/libmlx.a
+	MINILIBX = mlx/
 else ifeq ($(UNAME_S), Darwin)
-	LIBS := -L./mlx -lmlx -framework OpenGL -framework Appkit -lm
+	LIBS := -L mlx_darwin -lmlx -framework OpenGL -framework Appkit -lm
+	MLX = mlx_darwin/libmlx.a
+	MINILIBX = mlx_darwin/
 endif
 
 NAME = Cub3D
@@ -43,13 +47,12 @@ SRC = ft_cub3d \
 	ft_init_storage \
 
 SRCCUB = $(addsuffix .c, $(SRC))
-OBJS = $(SRCCUB:.c=.o)
+OBJS = $(addsuffix .o, $(SRC))
 
 SRCGNL = gnl/get_next_line.c gnl/get_next_line_utils.c
 GNL_OBJS = $(SRCGNL:.c=.o)
 
 LIBFT = libft/libft.a
-MLX = mlx/libmlx.a
 
 CC = gcc -Wall -Wextra -Werror
 
@@ -67,11 +70,11 @@ $(NAME): $(OBJS) $(GNL_OBJS) $(MLX)
 	@echo "$(PURPLE)==========DONE=========="
 
 $(MLX):
-	@make -C mlx
+	@make -C $(MINILIBX)
 
 clean:
 	@$(RM) $(OBJS) $(GNL_OBJS)
-	@make -C mlx/ clean
+	@make -C $(MINILIBX) clean
 	@make -C libft/ clean
 
 fclean: clean
