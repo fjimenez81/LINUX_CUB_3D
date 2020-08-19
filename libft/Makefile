@@ -36,13 +36,17 @@ BONUSSRC =	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstla
 
 BONUSOBJ = $(BONUSSRC:.c=.o)
 
-all: $(NAME)
+all: $(NAME) bonus
 
-$(NAME):
-	@$(CC) $(CFLAGS) -c $(SRCS) $(HEADER)
-	@ar -rcs $(NAME) $(OBJ) 
+$(NAME): $(OBJ) $(HEADER)
+	@$(CC) $(CFLAGS) -c $(SRCS)
+	@ar -rcs $(NAME) $(OBJ) $(HEADER)
 	@ranlib $(NAME)
 
+bonus:	$(BONUSOBJ) $(HEADER)
+	@$(CC) $(CFLAGS) -c $(BONUSSRC)
+	@ar -rcs $(NAME) $(BONUSOBJ) $(HEADER)
+	@ranlib $(NAME)
 		
 clean:
 	@$(RM) $(OBJ) $(BONUSOBJ)

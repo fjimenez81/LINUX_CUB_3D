@@ -3,70 +3,81 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fernando <fernando@student.42.fr>          +#+  +:+       +#+         #
+#    By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/09 18:07:21 by fernando          #+#    #+#              #
-#    Updated: 2020/05/16 17:49:48 by fernando         ###   ########.fr        #
+#    Created: 2020/08/19 15:30:42 by fjimenez          #+#    #+#              #
+#    Updated: 2020/08/19 16:22:47 by fjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S), Linux)
+	LIBS := -L./mlx -lmlx -lXext -lX11 -lm
+else ifeq ($(UNAME_S), Darwin)
+	LIBS := -L./mlx -lmlx -framework OpenGL -framework Appkit -lm
+endif
+
 NAME = Cub3D
 
-SRCCUB =	ft_cub3d.c \
-		ft_read_map.c \
-		ft_parse_info.c \
-		ft_parse_info_2.c \
-		ft_parse_map.c \
-		ft_get_info.c \
-		ft_error.c \
-		ft_init.c \
-		ft_utils.c \
-		ft_utils2.c \
-		ft_strdup_map.c \
-		ft_fill_map.c \
-		ft_keys.c \
-		ft_move_player.c \
-		ft_exit.c \
-		ft_raycasting.c \
-		ft_texture.c \
-		ft_texture_wall.c \
-		ft_save.c \
-		ft_sprite.c \
-		ft_init_storage.c \
+SRC = ft_cub3d \
+ 	ft_read_map \
+  	ft_parse_info \
+   	ft_parse_info_2 \
+    ft_parse_map \
+	ft_get_info \
+	ft_error \
+	ft_init \
+	ft_utils \
+	ft_utils2 \
+	ft_strdup_map \
+	ft_fill_map \
+	ft_keys \
+	ft_move_player \
+	ft_exit \
+	ft_raycasting \
+	ft_texture \
+	ft_texture_wall \
+	ft_save \
+	ft_sprite \
+	ft_init_storage \
 
+SRCCUB = $(addsuffix .c, $(SRC))
 OBJS = $(SRCCUB:.c=.o)
 
 SRCGNL = gnl/get_next_line.c gnl/get_next_line_utils.c
 GNL_OBJS = $(SRCGNL:.c=.o)
 
 LIBFT = libft/libft.a
+MLX = mlx/libmlx.a
 
-LIBS    = -L./mlx -lmlx -lXext -lX11 -lm
-MLX		= mlx/libmlx.a
+CC = gcc -Wall -Wextra -Werror
 
-CC = gcc -Wall -Wextra -Werror 
+PURPLE = \033[0;35m
+RED = \033[1;31m
+RESET = \033[0m
 
 RM = rm -rf
-	
-all:  $(LIBFT)  $(NAME)
+
+all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS) $(GNL_OBJS) $(MLX)
 	@make -C libft/
-	@make -C mlx/
-	$(CC) ${SRCCUB} $(LIBFT) $(SRCGNL) ${LIBS} $(MLX) -o ${NAME}
-	@echo =======DONE=======
+	@$(CC) ${SRCCUB} $(LIBFT) $(SRCGNL) ${LIBS} $(MLX) -o ${NAME}
+	@echo "$(PURPLE)==========DONE=========="
 
 $(MLX):
-	$(MAKE) -C mlx
-
-%.o : %.c
-	gcc -Imlx -o $@ -c $<
+	@make -C mlx
 
 clean:
-	$(RM) $(OBJS) $(GNL_OBJS) ${NAME}
-	make -C mlx/ clean
-	make -C libft/ clean
+	@$(RM) $(OBJS) $(GNL_OBJS)
+	@make -C mlx/ clean
+	@make -C libft/ clean
 
 fclean: clean
+	@$(RM) ${NAME}
+	@echo "$(RED)==========REMOVED==========$(RESET)"
 
 re : fclean all
+
+.PHONY: all clean fclean re
