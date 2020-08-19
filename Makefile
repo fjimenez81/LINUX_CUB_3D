@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+         #
+#    By: fjimenez <fjimenez@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/19 15:30:42 by fjimenez          #+#    #+#              #
-#    Updated: 2020/08/19 17:23:16 by fjimenez         ###   ########.fr        #
+#    Updated: 2020/08/19 17:34:08 by fjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ ifeq ($(UNAME_S), Linux)
 else ifeq ($(UNAME_S), Darwin)
 	LIBS := -L mlx_darwin -lmlx -framework OpenGL -framework Appkit -lm
 	MLX = mlx_darwin/libmlx.a
-	MINILIBX = mlx_darwin/
+	MINILIBX = mlx_darwin
 endif
 
 NAME = Cub3D
@@ -65,7 +65,7 @@ RM = rm -rf
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS) $(GNL_OBJS) $(MLX)
-	@make -C libft/
+	@make -C libft
 	@$(CC) ${SRCCUB} $(LIBFT) $(SRCGNL) ${LIBS} $(MLX) -o ${NAME}
 	@echo "$(PURPLE)==========DONE=========="
 
@@ -75,7 +75,7 @@ $(MLX):
 clean:
 	@$(RM) $(OBJS) $(GNL_OBJS)
 	@make -C $(MINILIBX)/ clean
-	@make -C libft/ clean
+	@make -C libft/ fclean
 
 fclean: clean
 	@$(RM) ${NAME}
