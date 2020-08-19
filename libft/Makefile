@@ -6,7 +6,7 @@
 #    By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/18 08:07:14 by fjimenez          #+#    #+#              #
-#    Updated: 2020/08/19 18:23:37 by fjimenez         ###   ########.fr        #
+#    Updated: 2020/08/19 19:22:14 by fjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,17 +36,17 @@ BONUSSRC =	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstla
 
 BONUSOBJ = $(BONUSSRC:.c=.o)
 
-all: $(NAME) #bonus
+all: $(NAME) bonus
 
-$(NAME): $(OBJ) $(BONUSOBJ) $(HEADER)
-	@$(CC) $(CFLAGS) -c $(SRCS) $(BONUSSRC)
-	@ar -rcs $(NAME) $(OBJ) $(BONUSOBJ) $(HEADER)
+$(NAME): $(OBJ) $(HEADER)
+	@$(CC) $(CFLAGS) -c $(SRCS)
+	@ar -rcs $(NAME) $(OBJ) $(HEADER)
 	@ranlib $(NAME)
 
-#bonus:	$(BONUSOBJ) $(HEADER)
-	#@$(CC) $(CFLAGS) -c $(BONUSSRC)
-	#@ar -rcs $(NAME) $(BONUSOBJ) $(HEADER)
-	#@ranlib $(NAME)
+bonus:	$(BONUSOBJ) $(HEADER)
+	@$(CC) $(CFLAGS) -c $(BONUSSRC)
+	@ar -rcs $(NAME) $(BONUSOBJ) $(HEADER)
+	@ranlib $(NAME)
 		
 clean:
 	@$(RM) $(OBJ) $(BONUSOBJ)

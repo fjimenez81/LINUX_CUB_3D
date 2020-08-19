@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fjimenez <fjimenez@student.42madrid.com    +#+  +:+       +#+         #
+#    By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/19 15:30:42 by fjimenez          #+#    #+#              #
-#    Updated: 2020/08/19 19:14:51 by fjimenez         ###   ########.fr        #
+#    Updated: 2020/08/19 19:22:54 by fjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ RM = rm -rf
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS) $(GNL_OBJS) $(MLX)
-	@cd libft && make re
+	@cd libft && make
 	@$(CC) ${SRCCUB} $(LIBFT) $(SRCGNL) ${LIBS} $(MLX) -o ${NAME}
 	@echo "$(PURPLE)==========DONE=========="
 
