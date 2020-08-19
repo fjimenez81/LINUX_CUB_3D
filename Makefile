@@ -6,7 +6,7 @@
 #    By: fjimenez <fjimenez@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/19 15:30:42 by fjimenez          #+#    #+#              #
-#    Updated: 2020/08/19 17:34:08 by fjimenez         ###   ########.fr        #
+#    Updated: 2020/08/19 17:42:20 by fjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ $(MLX):
 clean:
 	@$(RM) $(OBJS) $(GNL_OBJS)
 	@make -C $(MINILIBX)/ clean
-	@make -C libft/ fclean
+	@make -C libft/ clean
 
 fclean: clean
 	@$(RM) ${NAME}
