@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fjimenez <fjimenez@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 17:48:55 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/17 16:34:17 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/20 13:58:11 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static	int	ft_parse_line_three(char **map)
 		{
 			if (map[i][j] == '0' || map[i][j] == '2')
 			{
+				if (map[i][0] == '0' || map[i][0] == '2')
+					return (0);
 				if (map[i + 1][j] == ' ' ||
 				map[i + 1][j + 1] == ' ' ||
 				map[i - 1][j + 1] == ' ' ||
@@ -51,10 +53,12 @@ static	int	ft_parse_line_two(char **map)
 		{
 			if (map[i][j] == '0' || map[i][j] == '2')
 			{
+				if (map[i][0] == '0' || map[i][0] == '2')
+					return (0);
 				if (map[i - 1][j] == ' ' ||
 				map[i - 1][j - 1] == ' ' ||
 				map[i + 1][j + 1] == '\0' ||
-				map[i + 1][j + 1] == ' ')
+				map[i + 1][j - 1] == ' ')
 					return (0);
 			}
 			j++;
