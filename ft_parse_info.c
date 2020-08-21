@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_info.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fjimenez <fjimenez@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 15:25:07 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/20 11:49:38 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/20 20:12:00 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,12 @@ int		ft_parse_management(t_info *info_map)
 {
 	if (!ft_parse_info(info_map))
 		return (0);
+	if (!ft_check_map(info_map))
+		return (0);
 	if (!ft_parse_map_line(info_map))
 	{
 		ft_management_error(5, "");
 		return (0);
 	}
-	if (!ft_check_map(info_map))
-		return (0);
 	return (1);
 }

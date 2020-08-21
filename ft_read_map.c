@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_read_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fjimenez <fjimenez@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 23:36:52 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/20 14:03:54 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/21 14:10:33 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		ft_read_map(t_info *info_map, int fd, char *line)
 	free(line);
 	while ((i = get_next_line(fd, &line)) != 0)
 	{
+		if (line[0] == '\0')
+			break ;
 		line = ft_strdup_map(line);
 		map_tmp = ft_strjoin_point(map_tmp, line);
 		free(line);

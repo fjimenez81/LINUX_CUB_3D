@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 15:23:34 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/17 16:46:01 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/20 19:53:00 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int		ft_get_resolution(char *s, t_info *info_map)
 {
 	int	i;
-
+	
 	i = 2;
+	while (s[i] == ' ')
+		i++;
 	if (info_map->rx > 0 || info_map->rx > 0)
 		return (0);
 	info_map->rx = ft_atoi(&s[i]);
@@ -94,20 +96,21 @@ int		ft_get_color(char *s, t_info *info_map)
 
 int		ft_get_info_map(char *s, t_info *info_map)
 {
-	if (s[0] == 'R')
+	if (s[0] == 'R' && s[1] == ' ')
 		return (ft_get_info_map_resolution(s, info_map));
-	else if ((s[0] == 'N' && s[1] == 'O') || (s[0] == 'S' && s[1] == 'O'))
+	else if (((s[0] == 'N' && s[1] == 'O') || (s[0] == 'S' && s[1] == 'O')) &&
+		s[2] == ' ')
 	{
 		if ((ft_get_texture_path_north_south(s, info_map)) == 0)
 			return (0);
 	}
-	else if ((s[0] == 'W' && s[1] == 'E')
-	|| (s[0] == 'E' && s[1] == 'A') || (s[0] == 'S' && s[1] == ' '))
+	else if ((((s[0] == 'W' && s[1] == 'E') || (s[0] == 'E' && s[1] == 'A')) &&
+		s[2] == ' ') || (s[0] == 'S' && s[1] == ' '))
 	{
 		if ((ft_get_texture_path_west_east_s(s, info_map)) == 0)
 			return (0);
 	}
-	else if (s[0] == 'F' || s[0] == 'C')
+	else if ((s[0] == 'F' || s[0] == 'C') && s[1] == ' ')
 	{
 		if ((ft_get_color(s, info_map)) == 0)
 			return (0);
