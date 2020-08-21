@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 15:23:34 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/20 19:53:00 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/21 19:57:28 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		ft_get_resolution(char *s, t_info *info_map)
 {
-	int	i;
-	
+	int i;
+
 	i = 2;
 	while (s[i] == ' ')
 		i++;
@@ -80,6 +80,16 @@ int		ft_convert_rgb_to_integer(char *s)
 
 int		ft_get_color(char *s, t_info *info_map)
 {
+	int i;
+
+	i = 1;
+	while (s[++i])
+	{
+		if (s[i] == ' ' || s[i] == ',')
+			i++;
+		else if (!ft_isdigit(s[i]))
+			return (ft_management_error(3, s));
+	}
 	if (s[0] == 'F' && info_map->colorf == 0)
 		info_map->colorf = ft_convert_rgb_to_integer(s);
 	else if (s[0] == 'C' && info_map->colorc == 0)

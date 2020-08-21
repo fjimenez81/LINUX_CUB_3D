@@ -6,65 +6,86 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 18:17:36 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/21 13:50:39 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/21 19:41:01 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/*static	void	ft_map_aux(char *s, int i, int bool)
+void	ft_check_map_space(char **map, int i, int j)
 {
-	if ((s[i] != ' ' && s[i] != '1') && s[i + 1] == ' ')
-		s[i + 1] = '0';
-	if (s[i] == '2' && s[i - 1] == '0' && s[i + 2] == '1' && bool)
+	if (map[i][j] != ' ' && map[i][j + 1] == ' ' &&
+		i < ft_len_tab(map) - 1)
 	{
-		s[i] = '0';
-		s[i + 1] = '2';
+		if (map[i][j - 1] == '0' && map[i + 1][j + 1] == '0')
+			map[i][j + 1] = '0';
 	}
-	if (s[i] == ' ' && s[i - 1] == '1' && s[i + 1] == '2' && bool)
+	if (map[i][j] == ' ' && map[i][j + 1] != ' ' &&
+		map[i][j + 2] == ' ' && i < ft_len_tab(map) - 3)
 	{
-		s[i] = '2';
-		s[i + 1] = '0';
+		if (map[i + 1][j] == ' ' && map[i + 1][j + 1] == ' ' &&
+			map[i + 1][j + 2] == ' ')
+			map[i + 1][j + 1] = '0';
 	}
-	else if (s[i] == ' ' && s[i - 1] == '1' &&
-		(s[i + 1] == '0' || s[i + 1] == '2') && bool)
-		s[i] = '0';
-	else if (s[i] == ' ' && s[i - 1] == '1' && s[i + 1] == '1' && bool)
-		s[i] = '1';
 }
 
-static void		ft_map_space(char *s, int *bool)
+void	ft_change_player(char **map)
 {
 	int i;
+	int j;
 
 	i = -1;
-	while (s[++i])
+	while (map[++i])
 	{
-		if ((s[i] == '1' && s[i - 1] == ' ' && s[i + 1] == ' ' && s[i + 2] == '1') ||
-			(s[i] == '1' && s[i + 1] == ' ' && s[i + 2] != '1'))
-				*bool = 1;
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == 'N' ||
+				map[i][j] == 'S' ||
+				map[i][j] == 'E' ||
+				map[i][j] == 'W')
+				map[i][j] = '0';
+		}
 	}
-	
-}*/
+}
 
-char			*ft_strdup_map(char *s)
+void	ft_check_map_space_two(char **map, int i, int j)
+{
+	if (map[i][j] == ' ' && (i == 0 || i == ft_len_tab(map) - 1))
+		map[i][j] = '1';
+	if (map[i][j] == '1' && map[i][j + 1] == ' ' &&
+		(i > 0 && i < ft_len_tab(map) - 1))
+		map[i][j + 1] = '0';
+	if (map[i][j] != ' ' && map[i][j + 1] == ' ' &&
+		(i > 0 && i < ft_len_tab(map) - 1))
+	{
+		if (map[i][j] == '2')
+		{
+			map[i][j] = '0';
+			map[i][j + 1] = '2';
+		}
+		else
+			map[i][j + 1] = '0';
+	}
+	if (map[i][j] == '1' && map[i][j + 2] == '2')
+	{
+		map[i][j + 1] = '2';
+		map[i][j + 2] = '0';
+	}
+}
+
+char	*ft_strdup_map(char *s)
 {
 	int		i;
 	int		j;
-	//int		bool;
 	char	*dest;
 
 	if (!(dest = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
 		return (NULL);
-	//bool = 0;
-	//ft_map_space(s, &bool);
 	i = -1;
 	j = 0;
 	while (s[++i])
-	{
-		//ft_map_aux(s, i, bool);
 		dest[j++] = s[i];
-	}
 	dest[j] = '\0';
 	free(s);
 	return (dest);
