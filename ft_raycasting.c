@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 13:48:15 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/21 16:06:58 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/24 13:05:38 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_calcul_step_init_sidedist(t_ray *ray, t_storage *storage)
 	}
 }
 
-void	ft_ddaalgo(t_ray *ray, t_storage *storage, int x)
+void	ft_dda_algo(t_ray *ray, t_storage *storage, int x)
 {
 	while (ray->hit == 0)
 	{
@@ -84,7 +84,7 @@ void	ft_raycaster(t_storage *storage, t_ray *ray)
 		ray->deltadist_x = fabs(1 / ray->raydir_x);
 		ray->deltadist_y = fabs(1 / ray->raydir_y);
 		ft_calcul_step_init_sidedist(ray, storage);
-		ft_ddaalgo(ray, storage, x);
+		ft_dda_algo(ray, storage, x);
 		ft_management_texture(storage, ray, x);
 		ray->hit = 0;
 		x++;

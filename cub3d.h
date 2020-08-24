@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 21:58:59 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/21 19:35:33 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/24 13:06:08 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_move_player_mini_map(t_storage *storage);
 void	ft_player_pos_cam(t_storage *storage, t_player *player);
 
 /*
-** ft_raycaster
+** ft_raycasting
 */
 void	ft_raycaster(t_storage *storage, t_ray *ray);
 
@@ -162,5 +162,6 @@ char	*ft_strdup_map(char *s);
 void    ft_check_map_space(char **map, int i, int j);
 void    ft_check_map_space_two(char **map, int i, int j);
 void    ft_change_player(char **map);
+int     ft_check_first_space(char **map, int i);
 
 #endif

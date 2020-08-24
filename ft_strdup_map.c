@@ -6,11 +6,25 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 18:17:36 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/21 19:41:01 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/24 12:54:58 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int		ft_check_first_space(char **map, int i)
+{
+	int j;
+
+	j = -1;
+	while (map[i][++j] == ' ')
+	{
+		if (map[i][j] == ' ' &&
+			(map[i][j + 1] == '0' || map[i][j + 1] == '2'))
+			return (0);
+	}
+	return (1);
+}
 
 void	ft_check_map_space(char **map, int i, int j)
 {

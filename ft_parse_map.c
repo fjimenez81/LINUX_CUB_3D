@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 17:48:55 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/21 19:36:07 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/24 12:53:36 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ static	int	ft_parse_line_three(char **map)
 		{
 			if (map[i][j] == '0' || map[i][j] == '2')
 			{
-				if ((map[i + 1][j] == ' ' ||
-				map[i + 1][j] == ' ' ||
-				map[i - 1][j] == '\0') ||
-				(map[i][0] == '0' || map[i][0] == '2'))
+				if (map[i + 1][j] == ' ' ||
+				map[i - 1][j] == '\0')
 					return (0);
 			}
 			j++;
@@ -68,6 +66,8 @@ static	int	ft_parse_line_two(char **map)
 		while (map[i][++j])
 		{
 			ft_check_map_space(map, i, j);
+			if (map[i][0] == ' ' && !ft_check_first_space(map, i))
+				return (0);
 			if (map[i][j] == '0' || map[i][j] == '2')
 			{
 				if (((map[i][j + 1] == ' ' &&
@@ -126,8 +126,5 @@ int			ft_parse_map_line(t_info *info_map)
 			ft_check_map_space_two(info_map->map, i, j);
 		}
 	}
-	i = -1;
-	while (info_map->map[++i])
-		ft_putendl_fd(info_map->map[i], 1);
 	return (1);
 }
