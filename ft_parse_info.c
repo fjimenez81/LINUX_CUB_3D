@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 15:25:07 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/20 20:12:00 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/24 16:51:01 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int		ft_parse_info(t_info *info_map)
 		ft_management_error(9, "Error\nThe resolution is not correct\n");
 		return (0);
 	}
-	info_map->rx = info_map->rx > 2560 ? 2560 : info_map->rx;//cambiar resolucion maxima
-	info_map->ry = info_map->ry > 1440 ? 1440 : info_map->ry;//cambiar resolucion maxima
+	info_map->rx = info_map->rx > 1920 ? 1920 : info_map->rx;
+	info_map->ry = info_map->ry > 1080 ? 1080 : info_map->ry;
 	if (info_map->colorf < 0 || info_map->colorc < 0)
 	{
 		ft_putstr_fd("Error\nThe color of ", 1);
