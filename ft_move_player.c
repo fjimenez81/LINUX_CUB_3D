@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/15 11:52:27 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/17 16:26:59 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/26 19:37:23 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ void	ft_player_pos_x(t_storage *s, t_player *p)
 	if (s->move->left == 1)
 	{
 		if (s->info->map[(int)(p->pos_y)][(int)(p->pos_x - s->ray->plane_x
-		* p->ms)] != '1')
+		* p->ms)] == '3')
 			p->pos_x = p->pos_x - s->ray->plane_x * p->ms;
 		if (s->info->map[(int)(p->pos_y - s->ray->plane_y * p->ms)]
-		[(int)(p->pos_x)] != '1')
+		[(int)(p->pos_x)] == '3')
 			p->pos_y = p->pos_y - s->ray->plane_y * p->ms;
 	}
 	if (s->move->right == 1)
 	{
 		if (s->info->map[(int)(p->pos_y)][(int)(p->pos_x + s->ray->plane_x
-		* p->ms)] != '1')
+		* p->ms)] == '3')
 			p->pos_x = p->pos_x + s->ray->plane_x * p->ms;
 		if (s->info->map[(int)(p->pos_y + s->ray->plane_y * p->ms)]
-		[(int)(p->pos_x)] != '1')
+		[(int)(p->pos_x)] == '3')
 			p->pos_y = p->pos_y + s->ray->plane_y * p->ms;
 	}
 }
@@ -68,19 +68,19 @@ void	ft_player_pos_cam(t_storage *s, t_player *p)
 	if (s->move->foward == 1)
 	{
 		if (s->info->map[(int)(p->pos_y)][(int)(p->pos_x + p->dir_x
-		* p->ms)] != '1')
+		* p->ms)] == '3')
 			p->pos_x += p->dir_x * p->ms;
 		if (s->info->map[(int)(p->pos_y + p->dir_y * p->ms)]
-		[(int)(p->pos_x)] != '1')
+		[(int)(p->pos_x)] == '3')
 			p->pos_y += p->dir_y * p->ms;
 	}
 	if (s->move->retreat == 1)
 	{
 		if (s->info->map[(int)(p->pos_y)][(int)(p->pos_x - p->dir_x
-		* p->ms)] != '1')
+		* p->ms)] == '3')
 			p->pos_x -= p->dir_x * p->ms;
 		if (s->info->map[(int)(p->pos_y - p->dir_y * p->ms)]
-		[(int)(p->pos_x)] != '1')
+		[(int)(p->pos_x)] == '3')
 			p->pos_y -= p->dir_y * p->ms;
 	}
 	ft_player_pos_x(s, p);

@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 15:25:07 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/24 16:51:01 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:32:47 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,27 +72,27 @@ int		ft_parse_info(t_info *info_map)
 
 int		ft_check_map(t_info *info_map)
 {
-	int	i;
+	int	y;
 	int	x;
 
-	i = 0;
-	while (info_map->map[i])
+	y = 0;
+	while (info_map->map[y])
 	{
 		x = 0;
-		while (info_map->map[i][x])
+		while (info_map->map[y][x])
 		{
-			if (info_map->map[i][x] != '0' && info_map->map[i][x] != '1' &&
-			info_map->map[i][x] != '2' && info_map->map[i][x] != 'N' &&
-			info_map->map[i][x] != 'S' && info_map->map[i][x] != 'E' &&
-			info_map->map[i][x] != 'W' && info_map->map[i][x] != ' ')
+			if (info_map->map[y][x] != '0' && info_map->map[y][x] != '1' &&
+			info_map->map[y][x] != '2' && info_map->map[y][x] != 'N' &&
+			info_map->map[y][x] != 'S' && info_map->map[y][x] != 'E' &&
+			info_map->map[y][x] != 'W' && info_map->map[y][x] != ' ')
 				return (ft_management_error(6, ""));
-			if (info_map->map[i][x] == 'N' || info_map->map[i][x] == 'S' ||
-			info_map->map[i][x] == 'E' || info_map->map[i][x] == 'W')
-				if (!(ft_get_pos_player(info_map, i, x)))
+			if (info_map->map[y][x] == 'N' || info_map->map[y][x] == 'S' ||
+			info_map->map[y][x] == 'E' || info_map->map[y][x] == 'W')
+				if (!(ft_get_pos_player(info_map, y, x)))
 					return (0);
 			x++;
 		}
-		i++;
+		y++;
 	}
 	if (info_map->player_start == '0')
 		return (ft_management_error(8, ""));

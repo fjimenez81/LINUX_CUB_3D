@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 13:59:13 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/21 15:57:12 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:42:58 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_check_len_map(t_info *info_map)
 		}
 		y++;
 	}
-	info_map->len_x = len_max;
+	info_map->len_x = len_max + 1;
 	info_map->len_y = y;
 	ft_malloc_new_map(info_map, y, len_max);
 }

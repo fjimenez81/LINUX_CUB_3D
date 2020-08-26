@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 21:58:59 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/25 18:35:35 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:57:29 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		ft_parse_management(t_info *info_map);
 ** ft_parse_map.c
 */
 int		ft_parse_map_line(t_info *info_map);
+void	ft_valid_map(t_info *info_map, int y, int x);
 
 /*
 ** ft_get_info.c
@@ -159,7 +160,5 @@ int		ft_len_tab(char **args);
 ** ft_strdup_map.c
 */
 char	*ft_strdup_map(char *s);
-void	ft_check_map_space(char **map, int i, int j);
-void	ft_check_first_space(char **map, int i);
 
 #endif

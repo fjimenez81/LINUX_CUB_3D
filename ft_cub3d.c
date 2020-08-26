@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 17:44:28 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/21 16:04:46 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/26 21:04:49 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,13 @@ int		ft_management_program(t_info *map, t_mlx *mlx)
 
 int		ft_init_program(int save, char **av, t_mlx mlx)
 {
-	t_info		info_map;
+	t_info	info_map;
 
 	ft_init_struct_infomap(&info_map);
 	if (!ft_read_management(av[1], &info_map))
 		return (0);
 	ft_check_len_map(&info_map);
+	ft_valid_map(&info_map, info_map.player_y, info_map.player_x);
 	ft_get_sprite_nb(&info_map);
 	if (save == 1)
 		ft_save(&info_map, &mlx);
