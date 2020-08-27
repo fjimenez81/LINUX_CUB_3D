@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 13:59:13 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/27 20:11:23 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/27 20:41:24 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**ft_fill_map(t_info *info_map, char **new_map, int len_max)
 		{
 			while (x <= len_max)
 			{
-				new_map[y][x] = '0';
+				new_map[y][x] = '$';
 				x++;
 			}
 			new_map[y][x] = '\0';
