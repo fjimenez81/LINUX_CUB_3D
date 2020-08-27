@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 13:49:48 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/17 16:21:07 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/27 19:09:09 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ t_storage *s)
 	if (s_i->drawend_y >= s->info->ry)
 		s_i->drawend_y = s->info->ry - 1;
 	s_i->width = abs((int)(s->info->ry / (s_i->transformy)));
-	s_i->drawstart_x = -s_i->width / 2 + s_i->screen_x;
+	s_i->drawstart_x = -s_i->height / 2 + s_i->screen_x;
 	if (s_i->drawstart_x < 0)
 		s_i->drawstart_x = 0;
-	s_i->drawend_x = s_i->width / 2 + s_i->screen_x;
+	s_i->drawend_x = s_i->height / 2 + s_i->screen_x;
 	if (s_i->drawend_x >= s->info->rx)
 		s_i->drawend_x = s->info->rx - 1;
 }

@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 13:48:15 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/24 13:05:38 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/27 20:10:15 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	ft_dda_algo(t_ray *ray, t_storage *storage, int x)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
+		ray->map_y = (ray->map_y >= storage->info->len_y) ?
+			storage->info->len_y : ray->map_y;
 		if (storage->info->map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
@@ -65,6 +67,7 @@ void	ft_dda_algo(t_ray *ray, t_storage *storage, int x)
 	else
 		ray->perpwalldist = (ray->map_y - storage->player->pos_y +
 		(1 - ray->step_y) / 2) / ray->raydir_y;
+	ray->perpwalldist *= (ray->perpwalldist < 0) ? -1 : 1;
 	storage->zbuffer[x] = ray->perpwalldist;
 }
 

@@ -6,7 +6,7 @@
 #    By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/19 15:30:42 by fjimenez          #+#    #+#              #
-#    Updated: 2020/08/27 11:57:53 by fjimenez         ###   ########.fr        #
+#    Updated: 2020/08/27 16:18:23 by fjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,7 @@ clean:
 
 fclean: clean
 	@$(RM) ${NAME}
+	@$(RM) *.bmp
 	@echo "$(RED)==========REMOVED==========$(RESET)"
 
 re : fclean all
