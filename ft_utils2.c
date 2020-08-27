@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 23:12:57 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/20 19:52:27 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/27 10:31:52 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ int		ft_get_texture_path_west_east_s(char *s, t_info *info_map)
 	i = 2;
 	while (s[i] == ' ')
 		i++;
-	if (s[0] == 'W')
+	if (s[0] == 'W' && s[1] == 'E')
 	{
 		if (info_map->west_t[0] != '\0')
 			return (ft_management_error(11, s));
 		ft_strcpy(info_map->west_t, &s[i]);
 	}
-	else if (s[0] == 'E')
+	else if (s[0] == 'E' && s[1] == 'A')
 	{
 		if (info_map->east_t[0] != '\0')
 			return (ft_management_error(11, s));

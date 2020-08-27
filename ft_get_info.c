@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 15:23:34 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/25 19:12:46 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/27 11:30:22 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,24 @@ int		ft_get_resolution(char *s, t_info *info_map)
 {
 	int i;
 
-	i = 2;
+	i = 1;
 	while (s[i] == ' ')
 		i++;
-	if (info_map->rx > 0 || info_map->rx > 0)
-		return (0);
 	info_map->rx = ft_atoi(&s[i]);
+	if (!ft_strchr(&s[i], ' '))
+		return (0);
 	while (s[i] != ' ')
 		i++;
 	info_map->ry = ft_atoi(&s[i]);
+	while (s[++i] != '\0')
+	{
+		if (s[i] == ' ')
+			i++;
+		else if (!ft_isdigit(s[i]))
+			return (0);
+	}
+	if (info_map->rx <= 0 && info_map->ry <= 0)
+		return (0);
 	return (1);
 }
 
@@ -35,7 +44,7 @@ int		ft_get_texture_path_north_south(char *s, t_info *info_map)
 	i = 2;
 	while (s[i] == ' ')
 		i++;
-	if (s[0] == 'N')
+	if (s[0] == 'N' && s[1] == 'O')
 	{
 		if (info_map->north_t[0] != '\0')
 			return (ft_management_error(11, s));
@@ -106,16 +115,15 @@ int		ft_get_color(char *s, t_info *info_map)
 
 int		ft_get_info_map(char *s, t_info *info_map)
 {
-	if (s[0] == 'R' && s[1] == ' ')
+	if (s[0] == 'R')
 		return (ft_get_info_map_resolution(s, info_map));
-	else if (((s[0] == 'N' && s[1] == 'O') || (s[0] == 'S' && s[1] == 'O')) &&
-		s[2] == ' ')
+	else if ((s[0] == 'N' && s[1] == 'O') || (s[0] == 'S' && s[1] == 'O'))
 	{
 		if ((ft_get_texture_path_north_south(s, info_map)) == 0)
 			return (0);
 	}
-	else if ((((s[0] == 'W' && s[1] == 'E') || (s[0] == 'E' && s[1] == 'A')) &&
-		s[2] == ' ') || (s[0] == 'S' && s[1] == ' '))
+	else if (((s[0] == 'W' && s[1] == 'E') || (s[0] == 'E' && s[1] == 'A')) ||
+		s[0] == 'S')
 	{
 		if ((ft_get_texture_path_west_east_s(s, info_map)) == 0)
 			return (0);

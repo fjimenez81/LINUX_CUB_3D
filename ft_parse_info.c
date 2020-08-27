@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 15:25:07 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/26 20:32:47 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/27 15:18:14 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,6 @@ int		ft_parse_management(t_info *info_map)
 		return (0);
 	if (!ft_check_map(info_map))
 		return (0);
-	if (!ft_parse_map_line(info_map))
-	{
-		ft_management_error(5, "");
-		return (0);
-	}
+	ft_parse_map_line(info_map);
 	return (1);
 }

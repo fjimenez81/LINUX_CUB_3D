@@ -6,14 +6,14 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 07:36:50 by fjimenez          #+#    #+#             */
-/*   Updated: 2020/02/24 09:24:59 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/27 11:21:37 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "../cub3d.h"
 
-char	*ft_strchr(const char *s1, int c)
+char	*ft_str_search(const char *s1, int c)
 {
 	while (*s1)
 	{

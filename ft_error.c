@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 17:56:53 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/17 16:54:40 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/27 10:37:52 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_information_error(int error, char *s)
 		ft_putstr_fd("]\nExemple : F 220,100,0\n", 1);
 	}
 	else if (error == 10)
-		ft_putstr_fd("Error\nMutiple resolution, put only one resolution\n", 1);
+		ft_putstr_fd("Error\nBad resolution\n", 1);
 	else if (error == 11)
 	{
 		ft_putstr_fd("Error\nDuplicate texture [", 1);

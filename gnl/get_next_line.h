@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 07:42:29 by fjimenez          #+#    #+#             */
-/*   Updated: 2020/08/17 16:59:53 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/27 11:21:34 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "../libft/libft.h"
 
 int		get_next_line(const int fd, char **line);
-char	*ft_strchr(const char *s1, int c);
+char	*ft_str_search(const char *s1, int c);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
