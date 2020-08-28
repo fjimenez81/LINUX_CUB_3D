@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 17:57:57 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/26 18:51:13 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/28 16:28:42 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_get_sprite_nb(t_info *info_map)
 		x = 0;
 		while (info_map->map[y][x])
 		{
-			if (info_map->map[y][x] == '2')
+			if (info_map->map[y][x] == '3')
 				info_map->sprite_nb++;
 			x++;
 		}
@@ -60,7 +60,7 @@ void	ft_get_pos_sprite(t_info *info_map, t_storage *storage)
 		x = 0;
 		while (info_map->map[y][x])
 		{
-			if (info_map->map[y][x] == '2')
+			if (info_map->map[y][x] == '3')
 			{
 				storage->sprite[n].x = (double)x + 0.5;
 				storage->sprite[n].y = (double)y + 0.5;
