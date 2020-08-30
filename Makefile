@@ -6,19 +6,19 @@
 #    By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/19 15:30:42 by fjimenez          #+#    #+#              #
-#    Updated: 2020/08/27 16:18:23 by fjimenez         ###   ########.fr        #
+#    Updated: 2020/08/30 21:10:56 by fjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)
-	LIBS := -L./mlx -lmlx -lXext -lX11 -lm
-	MLX = mlx/libmlx.a
-	MINILIBX = mlx
+	LIBS := -L./mlx_linux -lmlx -lXext -lX11 -lm
+	MLX = mlx_linux/libmlx.a
+	MINILIBX = mlx_linux
 endif
 ifeq ($(UNAME_S), Darwin)
-	LIBS := -L mlx_darwin -lmlx -framework OpenGL -framework Appkit -lm
+	LIBS := -L mlx_darwin -lmlx -framework OpenGL -framework Appkit
 	MLX = mlx_darwin/libmlx.a
 	MINILIBX = mlx_darwin
 endif

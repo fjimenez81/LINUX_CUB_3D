@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 21:58:59 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/30 20:36:28 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/30 21:08:19 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@
 # include <sys/stat.h>
 # include "gnl/get_next_line.h"
 # include "libft/libft.h"
-# include "mlx/mlx.h"
-# include "mlx_darwin/mlx.h"
 # include "struct.h"
 
 # define BUFFER_SIZE 2
 
 # ifdef __APPLE__
+#  include "mlx_darwin/mlx.h"
 #  define A_KEY 0
 #  define W_KEY 13
 #  define S_KEY 1
@@ -38,6 +37,7 @@
 #  define X_BTN 17
 
 # elif defined __unix__
+#  include "mlx_linux/mlx.h"
 #  define A_KEY 97
 #  define W_KEY 119
 #  define S_KEY 115
@@ -55,13 +55,7 @@
 int		ft_expose(t_storage *storage);
 
 /*
-** ft_mini_map.c
-*/
-void	ft_color_wall_mini_map(t_storage *storage, int y, int x, int color);
-void	ft_draw_mini_map(t_storage *storage);
-
-/*
-** ft_read_map
+** ft_read_map.c
 */
 int		ft_read_info(char *s, t_info *info_map);
 int		ft_read_management(char *s, t_info *info_map);
@@ -111,7 +105,7 @@ t_player *player, t_storage *storage);
 void	ft_fill_storage(t_move *move, t_ray *ray, t_storage *storage);
 
 /*
-** ft_fill_map
+** ft_fill_map.c
 */
 void	ft_check_len_map(t_info *info_map);
 
@@ -121,15 +115,14 @@ void	ft_check_len_map(t_info *info_map);
 int		ft_exit_prog(t_storage *storage);
 
 /*
-** ft_keyboard_action.c
+** ft_keys.c
 */
 int		ft_keyrelease(int keycode, t_move *move);
 int		ft_keypress(int keycode, t_move *move);
 
 /*
-** ft_move_player_mini_map.c
+** ft_move_player.c
 */
-void	ft_move_player_mini_map(t_storage *storage);
 void	ft_player_pos_cam(t_storage *storage, t_player *player);
 
 /*
@@ -138,13 +131,13 @@ void	ft_player_pos_cam(t_storage *storage, t_player *player);
 void	ft_raycaster(t_storage *storage, t_ray *ray);
 
 /*
-** ft_management_texture
+** ft_texture.c
 */
 int		ft_init_texture(t_storage *storage, t_texture *texture, int w, int h);
 void	ft_management_texture(t_storage *storage, t_ray *ray, int x);
 
 /*
-** ft_draw_wall_texture
+** ft_texture_wall.c
 */
 void	ft_draw_wall_texture_sn(t_storage *s, t_texture *texture,
 t_text_info *text_i, int x);
