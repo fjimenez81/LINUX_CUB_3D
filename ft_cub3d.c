@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 17:44:28 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/28 15:45:53 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/30 20:41:06 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		ft_management_program(t_info *map, t_mlx *mlx)
 		return (0);
 	mlx_hook(mlx->win, 2, 1, ft_keypress, &move);
 	mlx_hook(mlx->win, 3, 2, ft_keyrelease, &move);
-	mlx_hook(mlx->win, 17, 0, ft_exit_prog, &storage);
+	mlx_hook(mlx->win, X_BTN, 0, ft_exit_prog, &storage);
 	mlx_loop_hook(mlx->ptr, ft_expose, &storage);
 	mlx_loop(mlx->ptr);
 	return (0);

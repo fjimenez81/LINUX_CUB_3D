@@ -6,7 +6,7 @@
 /*   By: fjimenez <fjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 21:58:59 by fernando          #+#    #+#             */
-/*   Updated: 2020/08/28 15:30:00 by fjimenez         ###   ########.fr       */
+/*   Updated: 2020/08/30 20:36:28 by fjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,33 @@
 # include "gnl/get_next_line.h"
 # include "libft/libft.h"
 # include "mlx/mlx.h"
+# include "mlx_darwin/mlx.h"
 # include "struct.h"
 
 # define BUFFER_SIZE 2
+
+# ifdef __APPLE__
+#  define A_KEY 0
+#  define W_KEY 13
+#  define S_KEY 1
+#  define D_KEY 2
+#  define LEFT_KEY 123
+#  define RIGHT_KEY 124
+#  define ESC_KEY 53
+#  define LEFT_SHIFT 257
+#  define X_BTN 17
+
+# elif defined __unix__
+#  define A_KEY 97
+#  define W_KEY 119
+#  define S_KEY 115
+#  define D_KEY 100
+#  define LEFT_KEY 65361
+#  define RIGHT_KEY 65363
+#  define ESC_KEY 65307
+#  define LEFT_SHIFT 65505
+#  define X_BTN 33
+# endif
 
 /*
 ** Cub3d.c
